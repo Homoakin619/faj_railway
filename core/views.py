@@ -49,11 +49,11 @@ class LoginRegisterView(generic.View):
             profile.save()
             login(request,user)
             return HttpResponseRedirect('/')
-        # return self.get(request,*args,**kwargs)
+        
 
 class HomepageView(LoginRequiredMixin,CheckVerificationMixin,generic.ListView):
     template_name = 'core/index.html'
-    # template_name = 'core/cards.html'
+    
     redirect_url = reverse_lazy('not_verified')
     model = Post
     context_object_name = 'posts'
