@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div id="rrs">
+    <div id="login">
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_username">Username</label>
+                <input class="form-control" type="text" name="username" id="id_username">
+            </div>
+            <div class="mb-3">
+                <label for="id_password">Password</label>
+                <input class="form-control" type="password" name="password" id="id_password">
+            </div>
+
+            <input type="hidden" name="form_type" value="login">
+            <input class="btn btn-success block" style="background: linear-gradient(
+    140deg,#42c3ca 0%,#42c3ca 50%,#42c3cac7 75%) !important;border: none;" type="submit" value="Login">
+        </form>
+        <span>Wanna join Us? </span><span id="reg" style="font-weight: bold;" role="button">Register</span>
+    </div>
+
+    <div id="register" style="display: none;">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_username">Username</label>
+                <input class="form-control" type="text" name="username" id="id_username">
+            </div>
+            <div class="mb-3">
+                <label for="id_email">Email</label>
+                <input class="form-control" type="email" name="email" id="id_email">
+            </div>
+            <div class="mb-3">
+                <label for="id_password">Password</label>
+                <input class="form-control" type="password" name="password" id="id_password">
+            </div>
+            <input type="hidden" name="form_type" value="register">
+            <input class="btn block" style="background: linear-gradient(
+    140deg,#42c3ca 0%,#42c3ca 50%,#42c3cac7 75%) !important;border: none;" type="submit" value="Register">
+        </form>
+        <span>Already a User? </span><span id="log" style="font-weight: bold;" role="button">Login</span>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_script %} 
+<script>
+loginForm = document.getElementById('login');
+registerForm = document.getElementById('register');
+
+function showLogin() {
+    loginForm.style.display = 'block';
+    registerForm.style.display = 'none';
+}
+
+function showRegister() {
+    loginForm.style.display = 'none';
+    registerForm.style.display = 'block';
+}
+
+document.getElementById('log').addEventListener('click',showLogin)
+document.getElementById('reg').addEventListener('click',showRegister)
+
+</script>
+{% endblock %}

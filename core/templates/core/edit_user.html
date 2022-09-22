@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div id="rrs">
+        <!-- <div class=""> -->
+            <p>Username: {{ user.username }}</p>
+            <p>Email: {{ user.email }}</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input class="btn btn-danger block mt-3" style="background: linear-gradient(
+    140deg,#42c3ca 0%,#42c3ca 50%,#42c3cac7 75%) !important;border: none;" type="submit" value="Save">
+            </form>
+        <!-- </div> -->
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% if request.user.is_staff %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" style="background: linear-gradient(
+    140deg,#42c3ca 0%,#42c3ca 50%,#42c3cac7 75%) !important;">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="color: #f1f1f1;font-weight: bold;" href="{% url 'dashboard' %}">FAJ ACCOUNTANCY</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex">
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bolder; text-decoration: underline; text-underline-offset: 5px;" >Admin Section</a>
+        </li>
+      
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'all_posts' %}">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Others</a>
+        </li>
+      </ul>
+    </div>
+    
+  </div>
+</nav>
+
+{% else %}
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" style="background: linear-gradient(
+    140deg,#42c3ca 0%,#42c3ca 50%,#42c3cac7 75%) !important;">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="color: #f1f1f1;font-weight: bold;" href="/">FAJ ACCOUNTANCY</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link">{{ request.user.username }}</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endif %}

@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container" id="content">
+    <h2>{{ post.title }}</h2>
+    {% if post.video_link %}
+    <iframe id="frame" width="400" height="250"
+            src="{{ post.video_link }}">
+    </iframe>
+    {% endif %}
+    {{ post.content|safe }}
+</div>
+<div class="bottom mt-3">
+    <p>{% if request.user.is_staff %}<a href="{% url 'dashboard' %}">Back to Home</a> | <a href="{% url 'edit_post' post.pk %}">Edit Post</a>{% else %} <a href="/">Back to Home</a> |{% endif %}</p>
+</div>
+{% endblock %}
