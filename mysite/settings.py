@@ -32,6 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = ['https://fajcourses.up.railway.app']
+
 LOGIN_URL = 'login'
 
 # Application definition
